@@ -28,9 +28,13 @@ http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-sprin
     <!--히카리 cp와 mybatis 연동-->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+
+        <!--매퍼.xml 위치를 인터페이스 위치와 다르게 쓰고싶을경우 위치 지정 -->
+        <property name="mapperLocations" value="classpath*:mapper/*.xml" />
     </bean>
 
-    <!--매퍼 스캔-->
+    <!--매퍼 인터페이스 스캔-->
+    <!--매퍼.xml 파일 위치는 1. 매퍼 인터페이스와 같은곳 또는 2. 리소스 폴더 아래에 위치하는게 좋다(따로 설정필요)-->
     <mybatis-spring:scan base-package="com.codingrecipe.mapper"/>
 
 </beans>
