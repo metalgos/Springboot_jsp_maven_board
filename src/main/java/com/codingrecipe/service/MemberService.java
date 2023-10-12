@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 public class MemberService {
 
     private final MemberMapper memberMapper;
-
+    public int save(MemberDTO memberDTO) {
+        return memberMapper.save(memberDTO);
+    }
 
     public String emailCheck(String memberEmail) {
 

@@ -23,6 +23,16 @@ public class MemberController {
         return "membersave";
     }
 
+    @PostMapping("/save")
+    public String save(MemberDTO memberDTO) {
+        int saveResult = memberService.save(memberDTO);
+        if (saveResult > 0) {
+            return "login";
+        } else {
+            return "save";
+        }
+    }
+
 
 
     @GetMapping("/login")

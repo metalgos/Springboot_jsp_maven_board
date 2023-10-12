@@ -5,6 +5,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MemberMapper {
+
+    public int save(MemberDTO memberDTO);
+
+
     public MemberDTO findByMemberEmail(String loginEmail);
 
 }
