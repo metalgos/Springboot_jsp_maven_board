@@ -1,4 +1,5 @@
-스프링부트와 인텔리제이를 이용하여 스프링 메이븐+jsp 프로젝트를 만들기
+https://github.com/metalgos/Study_spring_thymeleaf_board
+기존 타임리프+jpa 조합의 프로젝트를 메이븐+jsp 프로젝트로 마이그레이션 하기
 
 접속주소 : http://localhost:8055/
 
