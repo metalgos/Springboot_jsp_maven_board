@@ -23,5 +23,11 @@ public class MemberService {
         }
     }
 
-
+    public boolean login(MemberDTO memberDTO) {
+        if (memberMapper.login(memberDTO) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

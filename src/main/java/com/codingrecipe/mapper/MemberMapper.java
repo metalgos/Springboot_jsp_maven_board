@@ -10,5 +10,6 @@ public interface MemberMapper {
 
 
     public MemberDTO findByMemberEmail(String loginEmail);
+    public MemberDTO login(MemberDTO memberDTO);
 
 }
