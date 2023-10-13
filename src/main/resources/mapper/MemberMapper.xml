@@ -29,5 +29,9 @@
     <delete id="delete" parameterType="Long">
         delete from member_table where id=#{id}
     </delete>
+    <update id="update" parameterType="com.codingrecipe.dto.MemberDTO">
+        update member_table set memberAge=#{memberAge}, memberMobile=#{memberMobile}
+        where id=#{id}
+    </update>
 
 </mapper>
