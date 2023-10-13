@@ -84,15 +84,22 @@ public class BoardController {
     @GetMapping("/paging")
     public String paging(Model model,
                          @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+        // URL에서 `page` 파라미터를 받아와서, 없을 경우 기본값으로 1을 사용
         System.out.println("page = " + page);
-        // 해당 페이지에서 보여줄 글 목록
+
+        // 해당 페이지에서 보여줄 글 목록을 가져오는 서비스 메서드 호출
         List<BoardDTO> pagingList = boardService.pagingList(page);
         System.out.println("pagingList = " + pagingList);
+
+        // 페이지 번호 및 글 목록을 모델에 추가하여 뷰에 전달
         PageDTO pageDTO = boardService.pagingParam(page);
         model.addAttribute("boardList", pagingList);
         model.addAttribute("paging", pageDTO);
+
+        // "paging" 뷰로 이동
         return "paging";
     }
+
 
 
 }
