@@ -1,9 +1,11 @@
 package com.codingrecipe.controller;
 
 import com.codingrecipe.dto.BoardDTO;
+import com.codingrecipe.dto.CommentDTO;
 import com.codingrecipe.dto.PageDTO;
 import com.codingrecipe.mapper.BoardMapper;
 import com.codingrecipe.service.BoardService;
+import com.codingrecipe.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final CommentService commentService;
 
     @GetMapping("/")
     public String findAll(Model model) {
@@ -50,8 +53,8 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         model.addAttribute("page", page);
-        //List<CommentDTO> commentDTOList = commentService.findAll(id);
-       // model.addAttribute("commentList", commentDTOList);
+        List<CommentDTO> commentDTOList = commentService.findAll(id);
+        model.addAttribute("commentList", commentDTOList);
         return "boarddetail";
     }
 
