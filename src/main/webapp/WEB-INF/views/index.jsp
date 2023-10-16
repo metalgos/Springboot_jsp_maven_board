@@ -14,14 +14,16 @@
         <a href="/board/paging">페이징 목록</a>
 
         <br>
-        <h2>음식 정보 주소 입력</h2>
-            <form action="/api/foodserch" method="POST"> <!-- 이 폼의 데이터를 /submit 경로로 전송합니다. -->
+
+        <h2>공공 api 해썹 인증기관 정보를 이용한 음식조회<h2>
+        <h3>음식 이름 입력(검색버튼 누른후 잠시 대기하세요)</h3>
+            <form action="/api/foodserch" method="POST">
                 <label for="food">음식명:</label>
-                <input type="text" id="food" name="food" placeholder="음식명을 입력하세요" required> <!-- 사용자가 주소를 입력할 수 있는 입력 상자를 생성합니다. -->
+                <input type="text" id="food" name="food" placeholder="음식명을 입력하세요" required>
 
                 <br>
 
-                <button type="submit">전송</button> <!-- 전송 버튼을 생성합니다. -->
+                <button type="submit">전송</button>
             </form>
 </body>
 </html>

@@ -7,9 +7,21 @@
     <title>Title</title>
 </head>
 <body>
+<h3>음식정보</h3>
+<br>
+<c:forEach var="item" items="${food}">
+    음식 이름: <c:out value="${item.name}" />
+    <br>
+    음식 제작사: <c:out value="${item.manufacture}" />
+    <br>
+    영양소 : <c:out value="${item.nutri}" />
+    <br>
+    <img src = "${item.img}">
+    <br>
+</c:forEach>
 
-<h1>음식 : ${foodname}</h1>
-<img src=${foodimg} alt="예시 이미지">
+
+
 
 </body>
 </html>

@@ -9,5 +9,5 @@ import lombok.*;
 @ToString
 public class FoodDTO {
 
-    String rawmtrl,manufacture,imgurl1,prdlstNm;
+    String name,manufacture,img,nutri;
 }

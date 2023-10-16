@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -22,9 +23,8 @@ import java.util.Map;
 public class ApiService {
 
 
-
-    public FoodDTO foodserch(String fdname){
-        FoodDTO foodDTO = new FoodDTO();
+    public List<FoodDTO> foodserch(String fdname) {
+        List<FoodDTO> foodDTO = new ArrayList<>();
 
 
         String result = "";
@@ -49,7 +49,7 @@ public class ApiService {
             urlBuilder.append(
                     "&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 페이지 번호 */
             urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
-                    + URLEncoder.encode("1", "UTF-8")); /* 한 페이지 결과 수 */
+                    + URLEncoder.encode("", "UTF-8")); /* 한 페이지 결과 수 */
             // 3. URL 객체 생성.
             URL url;
             url = new URL(urlBuilder.toString());
@@ -80,10 +80,10 @@ public class ApiService {
             while ((line = rd.readLine()) != null) {
                 sb.append(line);
                 result = line;
-                System.out.println(line);
+                //System.out.println("line : " + line);
             }
 
-            System.out.println(result);
+            //System.out.println("result : "+result);
             rd.close();
             conn.disconnect();
 
@@ -99,42 +99,42 @@ public class ApiService {
             JSONParser parser = new JSONParser();
             JSONObject obj = (JSONObject) parser.parse(result);
 
+            //System.out.println(obj);
 
-            System.out.println(obj);
-            System.out.println();
 
             JSONObject obj2 = (JSONObject) obj.get("body");
 
-            System.out.println("ob2: " + obj2);
-            System.out.println();
+            //System.out.println("ob2: " + obj2);
+
             // objSONArray 를 사용하여 내부 데이터를 Array 형태로 바꿔주고,
-            // 바뀐 Array 안의 index 마다 다시 JSONObject로 변환해준다. 그 뒤의 과정은 위에서 했던 것과 동일하다.
+            // 바뀐 Array 안의 i ndex 마다 다시 JSONObject로 변환해준다. 그 뒤의 과정은 위에서 했던 것과 동일하다.
 
             JSONArray obj3 = (JSONArray) obj2.get("items");
-            // JSONObject obj4=(JSONObject)obj2.get("item");
-            System.out.println("ob3: " + obj3);
-            System.out.println();
-            // System.out.println("ob4: "+obj4);
-            System.out.println("obj3 get" + obj3.get(0));
-            System.out.println();
 
-            JSONObject obj4 = (JSONObject) obj3.get(0);
-            System.out.println("ob4: " + obj4);
-            System.out.println();
+            //System.out.println("ob3: " + obj3);
 
-            JSONObject obj9 = (JSONObject) obj4.get("item");
-            System.out.println("obj9" + obj9);
-            System.out.println();
-            String obj10 = (String) obj9.get("imgurl1");
-            System.out.println(obj10);
-            System.out.println();
-            str = obj10;
+            //반복문 돌리면서 제품별 정보 리스트에 추가
+            for (int i = 0; i < obj3.size(); i++) {
+
+                // System.out.println("ob4: "+obj4);
+                // System.out.println("obj3 get :" + obj3.get(0));
+                JSONObject obj4 = (JSONObject) obj3.get(i);
+                //System.out.println("ob4: " + obj4);
+                JSONObject obj9 = (JSONObject) obj4.get("item");
+                // System.out.println("obj9" + obj9);
+                String obj10 = (String) obj9.get("imgurl1");
+                //System.out.println(obj10);
+                str = obj10;
+                FoodDTO foodDTO1 = new FoodDTO();
 
 
-            foodDTO.setManufacture((String) obj9.get("manufacture"));
-            foodDTO.setRawmtrl((String) obj9.get("rawmtrl"));
-            foodDTO.setImgurl1((String) obj9.get("imgurl1"));
-            foodDTO.setPrdlstNm((String) obj9.get("prdlstNm"));
+                foodDTO1.setManufacture((String) obj9.get("manufacture"));
+                foodDTO1.setNutri((String) obj9.get("rawmtrl"));
+                foodDTO1.setImg((String) obj9.get("imgurl1"));
+                foodDTO1.setName((String) obj9.get("prdlstNm"));
+                foodDTO.add(foodDTO1);
+
+            }
 
 
         } catch (Exception e) {
@@ -142,14 +142,11 @@ public class ApiService {
             e.printStackTrace();
         }
         // 주소 리턴
-        fdimgurl = str;
+        //fdimgurl = str;
 
         //return fdimgurl;
 
         return foodDTO;
-
-
-
 
     }
 

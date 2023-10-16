@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -18,9 +20,9 @@ public class ApiController {
     @PostMapping("/foodserch")
     public String foodserch(String food, Model model){
 
-    FoodDTO foodDTO = apiService.foodserch(food);
-    model.addAttribute("foodname",foodDTO.getPrdlstNm());
-    model.addAttribute("foodimg",foodDTO.getImgurl1());
+    List<FoodDTO> foodDTO = apiService.foodserch(food);
+    model.addAttribute("food",foodDTO);
+
     return "foodlist";
 
     }
