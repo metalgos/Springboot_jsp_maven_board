@@ -62,7 +62,7 @@ public class ApiService {
             // 6. 통신을 위한 Content-type SET.
             conn.setRequestProperty("Content-type", "application/json");
             // 7. 통신 응답 코드 확인.
-            System.out.println("Response code: " + conn.getResponseCode());
+            //System.out.println("Response code: " + conn.getResponseCode());
             // 8. 전달받은 데이터를 BufferedReader 객체로 저장.
             BufferedReader rd;
             if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {

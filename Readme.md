@@ -1,3 +1,5 @@
+공공 api : 기존 foma프로젝트(https://github.com/metalgos/Foma_project) 해썹 인증기관 api 조회 기능 업그레이트
+
 https://github.com/metalgos/Study_spring_thymeleaf_board
 기존 타임리프+jpa 조합의 프로젝트를 메이븐+jsp 프로젝트로 마이그레이션 하기
 
