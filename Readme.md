@@ -1,7 +1,16 @@
 공공 api : 기존 foma프로젝트(https://github.com/metalgos/Foma_project) 해썹 인증기관 api 조회 기능 업그레이트
 
 https://github.com/metalgos/Study_spring_thymeleaf_board
-기존 타임리프+jpa 조합의 프로젝트를 메이븐+jsp 프로젝트로 마이그레이션 하기
+
+기존 타임리프+jpa 조합의 프로젝트를 메이븐+jsp 프로젝트로 마이그레이션 및 추가기능 구현 하기
+
+=============추가 기능===================
+
+openAPI 이용하여 공공api 기능 활용하기
+
+json데이터를 서버와 주고 받기
+
+======================================
 
 접속주소 : http://localhost:8055/
 
@@ -22,6 +31,7 @@ Tomcat 9
 수정  
 삭제  
 ajax 이메일 중복체크  
+
 
 DB sql  
 
