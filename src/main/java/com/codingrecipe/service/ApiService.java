@@ -80,7 +80,7 @@ public class ApiService {
             while ((line = rd.readLine()) != null) {
                 sb.append(line);
                 result = line;
-                //System.out.println("line : " + line);
+                System.out.println("line : " + line);
             }
 
             //System.out.println("result : "+result);
