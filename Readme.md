@@ -8,7 +8,7 @@ https://github.com/metalgos/Study_spring_thymeleaf_board
 
 openAPI 이용하여 공공api 기능 활용하기
 
-json데이터를 서버와 주고 받기
+json데이터를 서버와 주고 받기, 기존데이터 돌려주기
 
 ======================================
 
